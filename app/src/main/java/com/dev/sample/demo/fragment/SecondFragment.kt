@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.commit
+import androidx.fragment.app.setFragmentResult
 import com.dev.sample.demo.R
 import com.dev.sample.demo.databinding.FragmentSecondBinding
 
@@ -18,12 +19,19 @@ class SecondFragment : Fragment() {
         binding = FragmentSecondBinding.inflate(layoutInflater)
         binding.btnNext.setOnClickListener {
             parentFragmentManager.commit {
-                add(R.id.fmContainter,ThirdFragment())
+                replace(R.id.fmContainter,ThirdFragment())
                 addToBackStack(null)
             }
         }
         binding.tvBack.setOnClickListener{
             parentFragmentManager.popBackStack()
+        }
+
+        parentFragmentManager.setFragmentResultListener("requestKey", this){ _, bundle ->
+            val result = bundle.getString("bundleKey")
+            result?.let {
+                binding.tvContent.text = result
+            }
         }
         return binding.root
     }

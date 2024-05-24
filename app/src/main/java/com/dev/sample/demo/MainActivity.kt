@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.commit {
                 val firstFragment = FirstFragment()
                 replace(R.id.fmContainter, firstFragment)
-                addToBackStack(null)
+                addToBackStack("FirstFragment")
         }
     }
 }

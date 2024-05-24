@@ -20,7 +20,7 @@ class ThirdFragment : Fragment() {
             parentFragmentManager.popBackStack()
         }
         binding.btnNext.setOnClickListener{
-            parentFragmentManager.popBackStack(FirstFragment.TAG,FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            parentFragmentManager.popBackStack(FirstFragment.TAG,0)
         }
         return binding.root
     }
